@@ -12,10 +12,10 @@
               </v-card-title>
               <v-card-text>
                 <p class="font-weight-semibold text--primary mb-2">
-                  Welcome to Laravel! 👋🏻
+                  Welcome to Car Workshop Software.
                 </p>
                 <p class="mb-2">
-                  Please sign-in to your account and start the adventure
+                  Please sign-in to your account.
                 </p>
               </v-card-text>
               <v-card-text>

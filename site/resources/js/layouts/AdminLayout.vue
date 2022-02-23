@@ -97,9 +97,15 @@ export default {
               this.$toast.success(message.text);
               break;
             case "error":
-              this.$toast.error(message.text);
+              this.$toast.warning(message.text);
               break;
           }
+        }
+        const errors = this.$page.props.errors;
+        if (errors != null) {
+          Object.keys(errors).forEach((key) => {
+            this.$toast.error(errors[key]);
+          });
         }
       },
     },

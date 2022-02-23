@@ -1994,6 +1994,8 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     $page: {
       handler: function handler() {
+        var _this2 = this;
+
         var message = this.$page.props.flash.message;
 
         if (message != null) {
@@ -2003,9 +2005,17 @@ __webpack_require__.r(__webpack_exports__);
               break;
 
             case "error":
-              this.$toast.error(message.text);
+              this.$toast.warning(message.text);
               break;
           }
+        }
+
+        var errors = this.$page.props.errors;
+
+        if (errors != null) {
+          Object.keys(errors).forEach(function (key) {
+            _this2.$toast.error(errors[key]);
+          });
         }
       }
     }
@@ -3007,6 +3017,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -3110,7 +3121,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     destroy: function destroy() {// ...
     },
-    submit: function submit() {// ...
+    submit: function submit() {
+      this.$inertia.post('/client', {
+        errorBag: 'createPost',
+        wantsJson: true,
+        onSuccess: function onSuccess(data) {
+          console.log('ok!', data);
+        }
+      });
     }
   },
   watch: {
@@ -29876,14 +29894,14 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                Welcome to Laravel! 👋🏻\n              "
+                                  "\n                Welcome to Car Workshop Software.\n              "
                                 )
                               ]
                             ),
                             _vm._v(" "),
                             _c("p", { staticClass: "mb-2" }, [
                               _vm._v(
-                                "\n                Please sign-in to your account and start the adventure\n              "
+                                "\n                Please sign-in to your account.\n              "
                               )
                             ])
                           ]),
@@ -31306,7 +31324,7 @@ var render = function() {
                       attrs: { loading: _vm.form.processing, color: "primary" },
                       on: { click: _vm.submit }
                     },
-                    [_vm._v("Save")]
+                    [_vm._v("\n          Save\n        ")]
                   )
                 ],
                 1

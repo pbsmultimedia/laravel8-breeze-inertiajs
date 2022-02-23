@@ -104,8 +104,9 @@
         <v-card-actions>
           <v-btn :disabled="form.processing" text color="error" @click="dialog = false">Cancel</v-btn>
           <v-spacer />
-          <v-btn :loading="form.processing" color="primary" @click="submit"
-          >Save</v-btn
+          <v-btn :loading="form.processing" color="primary" @click="submit">
+            Save
+          </v-btn
           >
         </v-card-actions>
       </v-card>
@@ -179,7 +180,7 @@ export default {
       this.dialog = true;
       this.form.reset();
       this.form.clearErrors();
-      this.updateData()
+      this.updateData();
     },
     async updateData() {
       this.isLoadingTable = true
@@ -211,7 +212,14 @@ export default {
       // ...
     },
     submit() {
-      // ...
+      this.$inertia.post('/client', {
+        errorBag: 'createPost',
+        wantsJson: true,
+        onSuccess: (data) => {
+          console.log('ok!', data);
+        }
+      });
+
     },
   },
   watch: {

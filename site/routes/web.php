@@ -20,7 +20,7 @@ use App\Http\Controllers\ClientController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('/');
-Route::resource('client', ClientController::class)->middleware(['auth', 'verified'])->only(['index']);
+Route::resource('client', ClientController::class)->middleware(['auth', 'verified'])->only(['index', 'store']);
 
 // should be in the API..
 Route::get('/maintenance', [MaintenanceController::class, 'index'])->middleware(['auth', 'verified'])->name('/maintenance');
